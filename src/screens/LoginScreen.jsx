@@ -1,12 +1,20 @@
 import React, { useCallback, useContext, useState } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Pressable,
+  Text,
+} from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = useContext(AuthContext);
+  const navigation = useNavigation();
 
   const handleSubmit = useCallback(() => {
     signIn(email, password).catch(() => alert("Invalid email or password"));
@@ -36,6 +44,17 @@ const LoginScreen = () => {
             Login
           </Button>
         </TouchableOpacity>
+        <Button onPress={() => navigation.navigate("Signup")}>
+          <Text
+            style={{
+              color: "#66ccff",
+              textDecorationColor: "#66ccff",
+              textAlign: "center",
+            }}
+          >
+            Don't have a account?
+          </Text>
+        </Button>
       </View>
     </View>
   );
@@ -46,6 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    position: "relative",
   },
   form: {
     width: 300,
@@ -56,7 +76,11 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: "#66ccff",
     color: "white",
-    marginTop: 10,
+    marginVertical: 10,
+  },
+  link: {
+    position: "absolute",
+    bottom: 0,
   },
 });
 
