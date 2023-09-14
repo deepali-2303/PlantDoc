@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "686648187504",
+    "project_id": "plantdoc-60885",
+    "storage_bucket": "plantdoc-60885.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686648187504:android:8614f90000f8adbcc272b5",
+        "android_client_info": {
+          "package_name": "com.sih.plantDoc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM9wDSK7ZqWey46evMMkkUKNoWfoaIZ8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,65 @@
+{
+  "posts": [
+    {
+      "id": 101,
+      "username": "Farmer123",
+      "state": "Texas",
+      "profile_pic": "https://cdn-icons-png.flaticon.com/512/206/206865.png",
+      "crop_img": "https://cdn7.dissolve.com/p/D869_15_419/D869_15_419_1200.jpg",
+      "question": "How can I prevent aphids on my tomato plants?",
+      "likes": 5,
+      "replies": 15,
+      "created_at": 16,
+      "comments": [
+        {
+          "id": 201,
+          "username": "GardenerGirl",
+          "user_profile_pic": "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png",
+          "comment": "Crop diseases can take various forms, including fungal, bacterial, viral, and parasitic infections. These diseases can affect a wide range of crops, from staple grains like rice, wheat, and corn to fruits, vegetables, and cash crops like cotton and soybeans. The impact of crop diseases is not limited to economic losses; they also have broader societal implications, as they can contribute to rising food prices and food insecurity.",
+          "createdAt": 10
+        },
+        {
+          "id": 202,
+          "username": "GreenThumb",
+          "user_profile_pic": "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png",
+          "comment": "To combat crop diseases effectively, a holistic approach known as Integrated Pest Management (IPM) is often recommended. IPM involves combining various strategies to minimize the impact of pests and diseases while minimizing the use of chemical interventions. Some key components of IPM include:",
+          "createdAt": 10
+        },
+        {
+          "id": 303,
+          "username": "GreenThumb",
+          "user_profile_pic": "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png",
+          "comment": "To combat crop diseases effectively, a holistic approach known as Integrated Pest Management (IPM) is often recommended. IPM involves combining various strategies to minimize the impact of pests and diseases while minimizing the use of chemical interventions. Some key components of IPM include:",
+          "createdAt": 10
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "username": "AgriExpert",
+      "state": "California",
+      "profile_pic": "https://cdn-icons-png.flaticon.com/512/206/206865.png",
+      "crop_img": "https://cdn7.dissolve.com/p/D869_15_419/D869_15_419_1200.jpg",
+      "question": "What's the best way to combat powdery mildew in vineyards?",
+      "likes": 8,
+      "replies": 12,
+      "created_at": 1,
+      "comments": [
+        {
+          "id": 203,
+          "username": "VineyardPro",
+          "user_profile_pic": "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png",
+          "comment": "You can use sulfur sprays to control powdery mildew in vineyards. ",
+          "createdAt": 10
+        },
+        {
+          "id": 204,
+          "username": "WineLover",
+          "user_profile_pic": "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png",
+          "comment": "Pruning and proper spacing can also help prevent powdery mildew.",
+          "createdAt": 10
+        }
+      ]
+    }
+  ]
+}
