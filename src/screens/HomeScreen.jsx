@@ -10,11 +10,11 @@ function HomeScreen() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Docter"
+        name="Upload"
         options={{
           tabBarIcon: ({ color }) => {
             return (
-              <MaterialCommunityIcons name="doctor" size={24} color={color} />
+              <MaterialCommunityIcons name="camera" size={24} color={color} />
             );
           },
         }}
