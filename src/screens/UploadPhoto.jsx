@@ -6,10 +6,22 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  Button,
+  Alert,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import * as ImagePicker from "expo-image-picker";
 import { Camera } from "expo-camera";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { uploadImageToFirebase } from "../../firebase";
+
+const storage = getStorage();
+const storageRef = ref(storage, "images/uploadedImages.jpg");
 
 function UploadPhoto() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -33,42 +45,78 @@ function UploadPhoto() {
   };
 
   const takePhoto = async () => {
-    const result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    });
+    try {
+      const result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      });
 
-    if (!result.canceled) {
-      setSelectedImage({ uri: result.uri });
-      setModalVisible(false);
+      if (!result.canceled) {
+        const { uri } = result.assets[0];
+
+        const filename = uri.substring(uri.lastIndexOf("/") + 1);
+        // const testFilename = uri.split("/").pop();
+        // console.log(
+        //   "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF=>>>>>>>>>>>>>>>>>>",
+        //   filename,
+        //   testFilename
+        // );
+        const uploadRes = await uploadImageToFirebase(uri, filename, (v) =>
+          console.log(v)
+        );
+        setSelectedImage({ uri });
+        setModalVisible(false);
+        console.log("uploadRes--------------->", uploadRes);
+      }
+    } catch (error) {
+      Alert.alert("Error Uploading Image" + error.message);
     }
   };
 
   const chooseFromGallery = async () => {
     // No permissions request is necessary for launching the image library
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
 
-    console.log(result);
-
-    if (!result.canceled) {
-      setSelectedImage({ uri: result.uri });
-      setModalVisible(false);
+      if (!result.canceled) {
+        const { uri } = result.assets[0];
+        const filename = uri.substring(uri.lastIndexOf("/") + 1);
+        // const testFilename = uri.split("/").pop();
+        // console.log(
+        //   "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF=>>>>>>>>>>>>>>>>>>",
+        //   filename,
+        //   testFilename
+        // );
+        const uploadRes = await uploadImageToFirebase(uri, filename, (v) =>
+          console.log(v)
+        );
+        setSelectedImage({ uri });
+        setModalVisible(false);
+        console.log("uploadRes--------------->", uploadRes);
+      }
+    } catch (error) {
+      Alert.alert("Error Uploading Image" + error.message);
     }
+  };
+
+  const clearImage = () => {
+    setSelectedImage(null); // Clear the selected image
   };
 
   return (
     <View style={styles.container}>
-      <Text>Upload Photo</Text>
+      <Text>Upload Image</Text>
       <TouchableOpacity style={styles.cameraIcon} onPress={selectImage}>
         <Icon name="camera" size={25} color="white" />
       </TouchableOpacity>
+      {selectedImage && <Button title="Clear" onPress={clearImage} />}
       {selectedImage && <Image source={selectedImage} style={styles.image} />}
       <Modal
         animationType="slide"
